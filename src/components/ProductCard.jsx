@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 function ProductCard ({product,addProduct}){
     const inStock = product.rating.count > 0; // Assume "count" means stock level
     const variants = ["Small", "Medium", "Large"]; // Example variants
-
+    const isClothing = product.category.toLowerCase().includes("clothing");
     return (
         <div
             id={product.id}
@@ -60,16 +60,19 @@ function ProductCard ({product,addProduct}){
                     </div>
 
                     {/* Variants */}
-                    <select
-                        className="form-select form-select-sm mb-3"
-                        disabled={!inStock}
-                    >
-                        {variants.map((variant, index) => (
-                        <option key={index} value={variant}>
-                            {variant}
-                        </option>
-                        ))}
-                    </select>
+                    {isClothing && (
+                        <select
+                            className="form-select form-select-sm mb-3"
+                            disabled={!inStock}
+                        >
+                            {variants.map((variant, index) => (
+                            <option key={index} value={variant}>
+                                {variant}
+                            </option>
+                            ))}
+                        </select>
+                    )}
+                    
 
                     {/* Buttons */}
                     <div className="mt-auto">
