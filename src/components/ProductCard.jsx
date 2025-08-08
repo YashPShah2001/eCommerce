@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function ProductCard ({product,addProduct}){
-    console.log("Product: ",product);
     const inStock = product.rating.count > 0; // Assume "count" means stock level
     const variants = ["Small", "Medium", "Large"]; // Example variants
 
